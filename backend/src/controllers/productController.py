@@ -9,10 +9,7 @@ class ProductApi(Resource):
   def get(self):
     products = Product.query.all()
 
-    return jsonify({
-        'count': len(products),
-        'data': jsonify(products)
-    })
+    return jsonify(products)
 
   def post(self):
     name = request.json['name']

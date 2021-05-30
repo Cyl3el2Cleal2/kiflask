@@ -7,8 +7,8 @@ db = SQLAlchemy()
 
 class UserApi(Resource):
   def get(self):
-      users = User.query.all()
-      return jsonify(users)
+    users = User.query.all()
+    return jsonify(users)
 
   def post(self):
     username = request.json['name']
