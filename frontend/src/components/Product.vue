@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4 border-black w-1/6 border-solid border-2">
+  <div class="p-4 border-black border-solid rounded-md border-2">
     <div
       class="w-full h-96"
       :style="{
@@ -7,30 +7,32 @@
         'background-size': 'cover',
       }"
     >
-      <img src="" alt="" />
     </div>
 
-    <div class="text-lg to-blue-800 relative mt-1 w-full">
+    <div class="text-lg to-blue-800 relative mt-1 w-full sm:flex sm:flex-col">
       <h3 class="p-1">{{ name }}</h3>
-      <span class="absolute left-0">Price: 35</span>
-      <button
-        class="rounded-full w-8 h-8"
-        :disabled="count == 0"
-        :class="[count == 0 ? 'bg-red-200' : 'bg-red-400']"
-        @click="removeFromBasket()"
-      >
-        -
-      </button>
-      <span class="inline-block w-8">{{ count }}</span>
-      <button
-        class="rounded-full w-8 h-8"
-        :disabled="count == stock"
-        :class="[count == stock ? 'bg-green-200' : 'bg-green-400']"
-        @click="addToBasket()"
-      >
-        +
-      </button>
-      <span class="absolute right-0 text-right"
+      <span class="sm:float-left md:absolute left-0 bottom-0">Price: 35</span>
+      <div class="flex sm:order-last md:mx-auto justify-center">
+        <button
+          class="rounded-full w-8 h-8"
+          :disabled="count == 0"
+          :class="[count == 0 ? 'bg-red-200' : 'bg-red-400']"
+          @click="removeFromBasket()"
+        >
+          -
+        </button>
+        <span class="inline-block w-8">{{ count }}</span>
+        <button
+          class="rounded-full w-8 h-8"
+          :disabled="count == stock"
+          :class="[count == stock ? 'bg-green-200' : 'bg-green-400']"
+          @click="addToBasket()"
+        >
+          +
+        </button>
+      </div>
+
+      <span class="sm:inline sm:text-center md:absolute right-0 bottom-0 text-right"
         >{{ stock - count }} item left</span
       >
     </div>
