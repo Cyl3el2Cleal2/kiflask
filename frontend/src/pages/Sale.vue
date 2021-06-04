@@ -2,10 +2,10 @@
   <div class="h-screen w-full max-w-full flex">
     <div class="flex flex-wrap flex-grow justify-center items-baseline overflow-y-auto">
       <Product
-        v-for="n in 20"
-        :key="n"
+        v-for="item in stock"
+        :key="item.product_id"
         @basketUpdate="basketUpdate"
-        stock="5"
+        v-bind="item"
         class="w-4/5 md:w-80 mx-1 md:mx-3 my-6"
       />
     </div>
@@ -30,7 +30,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { AxiosStatic } from "axios";
+import { useRoute, useRouter } from "vue-router";
+import { defineComponent, ref, inject, onBeforeMount } from "vue";
 import Product from "../components/Product.vue";
 
 export default defineComponent({
@@ -39,18 +41,35 @@ export default defineComponent({
     Product,
   },
   setup: () => {
+    const axios: AxiosStatic = inject("$axios") as AxiosStatic;
+    const router = useRouter()
+    const route = useRoute()
+
     const netPrice = ref(0);
     const state = ref({
       orderDetail: [],
     });
+    const stock = ref([])
 
     const isPayment = ref(false);
 
+    const fetchStock = async() => {
+      const data = await getStock(axios,1)
+      stock.value = data
+    }
+
+    onBeforeMount(()=>{
+      fetchStock()
+    })
+
     const basketUpdate = async (id, count, name) => {
-      // console.log(id, count);
+      console.info(state.value.orderDetail)
+      console.log(id, count);
       const product = state.value.orderDetail.find(
-        (product) => (product.product_id = id)
+        product => (product.product_id == id)
       );
+
+      console.log(product)
       const productIndex = state.value.orderDetail.indexOf(product);
 
       // Not in basket so add it
@@ -84,10 +103,19 @@ export default defineComponent({
       state,
       basketUpdate,
       isPayment,
-      cancleOrder
+      cancleOrder,
+      axios,
+      onBeforeMount,
+      stock,
     };
   },
 });
+
+const getStock = async(axios: AxiosStatic, machine_id) => {
+  const res = await (await axios.get(`/api/stocks/${machine_id}`)).data
+  console.log(res)
+  return res
+}
 </script>
 
 <style>

@@ -3,15 +3,16 @@
     <div
       class="w-full h-96"
       :style="{
-        backgroundImage: 'url(' + img + ')',
+        backgroundImage: 'url(' + 'http://localhost:5000/img/' + product.img + ')',
         'background-size': 'cover',
       }"
-    >
-    </div>
+    ></div>
 
     <div class="text-lg to-blue-800 relative mt-1 w-full sm:flex sm:flex-col">
       <h3 class="p-1">{{ name }}</h3>
-      <span class="sm:float-left md:absolute left-0 bottom-0">Price: 35</span>
+      <span class="sm:float-left md:absolute left-0 bottom-0"
+        >Price: {{ product.price }}</span
+      >
       <div class="flex sm:order-last md:mx-auto justify-center">
         <button
           class="rounded-full w-8 h-8"
@@ -24,53 +25,55 @@
         <span class="inline-block w-8">{{ count }}</span>
         <button
           class="rounded-full w-8 h-8"
-          :disabled="count == stock"
-          :class="[count == stock ? 'bg-green-200' : 'bg-green-400']"
+          :disabled="count == quantity"
+          :class="[count == quantity ? 'bg-green-200' : 'bg-green-400']"
           @click="addToBasket()"
         >
           +
         </button>
       </div>
 
-      <span class="sm:inline sm:text-center md:absolute right-0 bottom-0 text-right"
-        >{{ stock - count }} item left</span
+      <span
+        class="sm:inline sm:text-center md:absolute right-0 bottom-0 text-right"
+        >{{ quantity - count }} item left</span
       >
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { ref, defineComponent } from "vue";
+import { AxiosStatic } from "axios";
+import { ref, defineComponent, inject, onBeforeMount } from "vue";
 export default defineComponent({
   name: "Product",
   props: {
-    id: {
+    product_id: {
       type: Number,
       default: 1,
     },
-    name: {
-      type: String,
-      default: "No name",
-    },
-    stock: {
+    quantity: {
       type: Number,
-    },
-    img: {
-      type: String,
-      default:
-        "http://localhost:5000/img/9e866cc9-30fc-4919-8357-051d7beb57a1Screen_Shot_2563-11-10_at_09.56.50.png",
+      default: 0,
     },
   },
   // emits: ["basketUpdate"],
   setup: (props, { emit }) => {
+    const axios: AxiosStatic = inject("$axios") as AxiosStatic;
     const count = ref(0);
+    const product = ref({
+      name: "no name",
+    });
+
+    onBeforeMount(async () => {
+      product.value = await getProductById(axios, props.product_id);
+    });
 
     const addToBasket = async () => {
-      if (count.value == props.stock) {
+      if (count.value == props.quantity) {
         return;
       }
       count.value++;
-      emit("basketUpdate", props.id, count.value, props.name);
+      emit("basketUpdate", props.product_id, count.value, product.value.name);
     };
 
     const removeFromBasket = async () => {
@@ -78,12 +81,18 @@ export default defineComponent({
         return;
       }
       count.value--;
-      emit("basketUpdate", props.id, count.value, props.name);
+      emit("basketUpdate", props.product_id, count.value, product.value.name);
     };
 
-    return { count, addToBasket, removeFromBasket };
+    return { product, count, addToBasket, removeFromBasket, onBeforeMount, axios };
   },
 });
+
+const getProductById = async (axios: AxiosStatic, product_id: Number) => {
+  const res = await (await axios.get(`/api/products/${product_id}`)).data;
+  // console.log(res)
+  return res;
+};
 </script>
 
 <style scoped>
