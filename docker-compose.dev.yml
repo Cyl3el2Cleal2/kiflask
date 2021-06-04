@@ -1,0 +1,30 @@
+version: "3"
+services: 
+    backend:
+        image: python:3.9-slim-buster
+        working_dir: /app
+        tty: true
+        environment:
+            - DB_HOST=db
+        volumes:
+            - ./backend/requirements.txt:/app/requirements.txt
+            - ./backend/src:/app/src
+        command: bash -c "pip3 install -r requirements.txt && python3 /app/src/app.py"
+        ports: 
+            - 5000:5000
+        links: 
+            - db
+    db:
+        image: mysql:8.0.25
+        command: --default-authentication-plugin=mysql_native_password
+        environment:
+            - MYSQL_ROOT_PASSWORD=example
+            - MYSQL_DATABASE=kiflask
+        volumes: 
+            - ./backend/db:/docker-entrypoint-initdb.d
+        ports:
+            - 3306:3306
+    frontend:
+        build: ./frontend
+        ports:
+            - 3000:3000
