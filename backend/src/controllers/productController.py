@@ -6,7 +6,9 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
 class ProductApi(Resource):
-  def get(self):
+  def get(self, id = None):
+    if id is not None:
+      return jsonify(Product.query.filter_by(id = id).first())
     products = Product.query.all()
 
     return jsonify(products)
@@ -14,9 +16,9 @@ class ProductApi(Resource):
   def post(self):
     name = request.json['name']
     price = request.json['price']
-    quantity = request.json['quantity']
+    img = request.json['img']
 
-    new_product = Product(name=name, price=price, quantity=quantity)
+    new_product = Product(name=name, price=price, img=img)
     db.session.add(new_product)
     db.session.commit()
 
