@@ -1,7 +1,6 @@
 from dataclasses import dataclass
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import relationship
-from sqlalchemy.sql.sqltypes import DateTime
 import datetime
 
 db = SQLAlchemy()
@@ -11,7 +10,7 @@ class Order(db.Model):
     __tablename__ = 'order'
     id: int
     machine_id: int
-    datetime: DateTime
+    datetime: datetime.datetime
     payment: float
     net_price: float
 
