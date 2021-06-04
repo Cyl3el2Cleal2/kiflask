@@ -1,5 +1,6 @@
 from models.order import Order
 from models.order_detail import OrderDetail
+from models.stock import Stock
 from dataclasses import asdict
 from flask import request, jsonify
 from flask_restful import Resource
@@ -20,6 +21,9 @@ class OrderApi(Resource):
         return jsonify(result)
       else:
         result = Order.query.filter_by(id = id).first()
+        # print(result)
+        if result is None:
+          return {'msg': 'not found'},404
         result = asdict(result)
         result['order_details'] = OrderDetail.query.filter_by(order_id = id).all()
         return jsonify(result)
@@ -34,11 +38,16 @@ class OrderApi(Resource):
         # print(order_details)
         db.session.add(new_Order)
         db.session.commit()
+        cut_stock = []
         new_order_details = []
         for detail in order_details:
             new_order_details.append(OrderDetail(
-                order_id=new_Order.id, product_id=detail['product_id'], quantity=detail['quantity']))
+                order_id=new_Order.id, product_id=detail['product_id'], quantity=detail['quantity'], price=detail['price']))
+            
+            Stock.query.filter_by(machine_id = machine_id, product_id = detail['product_id']).update({'quantity': Stock.quantity - detail['quantity']})
         db.session.add_all(new_order_details)
+        # Cut stock
+
         db.session.add(new_Order)
         db.session.commit()
 
