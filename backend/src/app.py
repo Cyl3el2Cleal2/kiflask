@@ -11,10 +11,11 @@ from flask_cors import CORS
 
 from controllers.index import initial_routes
 
+env = os.environ
 app = Flask(__name__)
-
+DB_HOST = 'localhost' if env.get('DB_HOST') is None else env.get('DB_HOST')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://{username}:{password}@{host}/{db}'.format(
-    username='root', password='example', host='localhost', db='kiflask')
+    username='root', password='example', host=DB_HOST, db='kiflask')
 # Image Config
 app.config['MAX_CONTENT_LENGTH'] = 2 * 1024 * 1024
 app.config['UPLOAD_EXTENSIONS'] = ['.jpg','.jpeg', '.png', '.gif']
@@ -47,7 +48,9 @@ def too_large(e):
 
 @app.route('/uploads/img', methods=['POST'])
 def upload_files():
-    uploaded_file = request.files['file']
+    uploaded_file = request.form.get('file')
+    if uploaded_file is None:
+        return "Request no file", 400
     filename = secure_filename(str(uuid.uuid4())+uploaded_file.filename)
     if filename != '':
         file_ext = os.path.splitext(filename)[1]

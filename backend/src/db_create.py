@@ -1,4 +1,3 @@
-from models.user import User
 from models.product import Product
 from models.order import Order
 from models.order_detail import OrderDetail
@@ -8,7 +7,6 @@ from models.stock import Stock
 from app import db
 
 def create_tables():
-  User.__table__.create(db.engine, checkfirst=True)
   Product.__table__.create(db.engine, checkfirst=True)
   Order.__table__.create(db.engine, checkfirst=True)
   OrderDetail.__table__.create(db.engine, checkfirst=True)
