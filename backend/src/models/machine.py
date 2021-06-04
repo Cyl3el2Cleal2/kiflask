@@ -11,7 +11,7 @@ class Machine(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), unique=True)
-    location = db.Column(db.Text, unique=True)
+    location = db.Column(db.Text)
 
     def __repr__(self):
         return '<User %r>' % self.name
