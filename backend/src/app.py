@@ -6,6 +6,8 @@ from flask.helpers import send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 from flask_restful import Api
 from werkzeug.utils import secure_filename
+from flask_cors import CORS
+# from flask_jwt_extended import JWTManager
 
 from controllers.index import initial_routes
 
@@ -15,13 +17,19 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://{username}:{password}@{
     username='root', password='example', host='localhost', db='kiflask')
 # Image Config
 app.config['MAX_CONTENT_LENGTH'] = 2 * 1024 * 1024
-app.config['UPLOAD_EXTENSIONS'] = ['.jpg', '.png', '.gif']
+app.config['UPLOAD_EXTENSIONS'] = ['.jpg','.jpeg', '.png', '.gif']
 app.config['UPLOAD_PATH'] = 'img/'
 
+# CORS
+CORS(app)
+
+# connect DB
 db = SQLAlchemy(app)
 
+# RestAPI Instant
 api = Api(app)
 
+# Apply Routes
 initial_routes(api)
 
 # Upload photo
@@ -43,8 +51,7 @@ def upload_files():
     filename = secure_filename(str(uuid.uuid4())+uploaded_file.filename)
     if filename != '':
         file_ext = os.path.splitext(filename)[1]
-        if file_ext not in app.config['UPLOAD_EXTENSIONS'] or \
-                file_ext != validate_image(uploaded_file.stream):
+        if file_ext not in app.config['UPLOAD_EXTENSIONS']:
             return "Invalid image", 400
         uploaded_file.save(os.path.join(app.config['UPLOAD_PATH'], filename))
     return {'filename': filename}, 201
