@@ -1,0 +1,1303 @@
+{
+	"info": {
+		"_postman_id": "c8885cae-d1db-46da-81e8-160326527584",
+		"name": "Kiflask",
+		"description": "Simple Vending Machine Backend using flask python framework.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "images",
+			"item": [
+				{
+					"name": "add img samsung",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/Users/macmini/Downloads/S20.jpeg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}:{{port}}/uploads/img",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"uploads",
+								"img"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add img iphone",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/Users/macmini/Downloads/iphone-12.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}:{{port}}/uploads/img",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"uploads",
+								"img"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get img iphone",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}:{{port}}/img/847635ca-7075-423e-9a4d-09b86573ac17iphone-12.png",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"img",
+								"847635ca-7075-423e-9a4d-09b86573ac17iphone-12.png"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get img samsung",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}:{{port}}/img/b3ec6390-676b-4601-9056-0f538be9a2f3S20.jpeg",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"img",
+								"b3ec6390-676b-4601-9056-0f538be9a2f3S20.jpeg"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Post & Get product image"
+		},
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "add product iphone",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"iPhone 13\",\n    \"price\": 4999,\n    \"img\": \"847635ca-7075-423e-9a4d-09b86573ac17iphone-12.png\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}:{{port}}/api/products",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "add product iphone",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"iPhone 13\",\n    \"price\": 4999,\n    \"img\": \"847635ca-7075-423e-9a4d-09b86573ac17iphone-12.png\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}:{{port}}/api/products",
+									"host": [
+										"{{url}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"api",
+										"products"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "121"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.0.1 Python/3.9.4"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 04 Jun 2021 10:25:35 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"img\": \"847635ca-7075-423e-9a4d-09b86573ac17iphone-12.png\",\n    \"name\": \"iPhone 13\",\n    \"price\": 4999\n}"
+						}
+					]
+				},
+				{
+					"name": "add product samsung",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"SAMSUNG S20\",\n    \"price\": 3999,\n    \"img\": \"b3ec6390-676b-4601-9056-0f538be9a2f3S20.jpeg\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}:{{port}}/api/products",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "add product samsung",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"SAMSUNG S20\",\n    \"price\": 3999,\n    \"img\": \"b3ec6390-676b-4601-9056-0f538be9a2f3S20.jpeg\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}:{{port}}/api/products",
+									"host": [
+										"{{url}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"api",
+										"products"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "118"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.0.1 Python/3.9.4"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 04 Jun 2021 10:25:38 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"img\": \"b3ec6390-676b-4601-9056-0f538be9a2f3S20.jpeg\",\n    \"name\": \"SAMSUNG S20\",\n    \"price\": 3999\n}"
+						}
+					]
+				},
+				{
+					"name": "get products",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"iphone\",\n    \"price\": \"99\",\n    \"quantity\": 123\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}:{{port}}/api/products",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get products",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"iphone\",\n    \"price\": \"99\",\n    \"quantity\": 123\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}:{{port}}/api/products",
+									"host": [
+										"{{url}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"api",
+										"products"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "269"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.0.1 Python/3.9.4"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 04 Jun 2021 10:25:40 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"img\": \"847635ca-7075-423e-9a4d-09b86573ac17iphone-12.png\",\n        \"name\": \"iPhone 13\",\n        \"price\": 4999\n    },\n    {\n        \"id\": 2,\n        \"img\": \"b3ec6390-676b-4601-9056-0f538be9a2f3S20.jpeg\",\n        \"name\": \"SAMSUNG S20\",\n        \"price\": 3999\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "get product iphone",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}:{{port}}/api/products/1",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"products",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get product iphone",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}:{{port}}/api/products/1",
+									"host": [
+										"{{url}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"api",
+										"products",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "121"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.0.1 Python/3.9.4"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 04 Jun 2021 10:25:54 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"img\": \"847635ca-7075-423e-9a4d-09b86573ac17iphone-12.png\",\n    \"name\": \"iPhone 13\",\n    \"price\": 4999\n}"
+						}
+					]
+				},
+				{
+					"name": "get product samsung",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}:{{port}}/api/products/2",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"products",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get product samsung",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}:{{port}}/api/products/2",
+									"host": [
+										"{{url}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"api",
+										"products",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "118"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.0.1 Python/3.9.4"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 04 Jun 2021 10:26:15 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"img\": \"b3ec6390-676b-4601-9056-0f538be9a2f3S20.jpeg\",\n    \"name\": \"SAMSUNG S20\",\n    \"price\": 3999\n}"
+						}
+					]
+				}
+			],
+			"description": "CRUD product before adding to stocks!"
+		},
+		{
+			"name": "machine",
+			"item": [
+				{
+					"name": "add machine 1",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"XAZ 1\",\n    \"location\": \"Central World Exit 1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}:{{port}}/api/machines",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"machines"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "add machine 1",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"XAZ 1\",\n    \"location\": \"Central World Exit 1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}:{{port}}/api/machines",
+									"host": [
+										"{{url}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"api",
+										"machines"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "73"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.0.1 Python/3.9.4"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 04 Jun 2021 10:26:19 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"location\": \"Central World Exit 1\",\n    \"name\": \"XAZ 1\"\n}"
+						}
+					]
+				},
+				{
+					"name": "add machine 2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"MNQ 1\",\n    \"location\": \"Icon Siam Exit 4\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}:{{port}}/api/machines",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"machines"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "add machine 2",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"MNQ 1\",\n    \"location\": \"Icon Siam Exit 4\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}:{{port}}/api/machines",
+									"host": [
+										"{{url}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"api",
+										"machines"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "69"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.0.1 Python/3.9.4"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 04 Jun 2021 10:26:21 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"location\": \"Icon Siam Exit 4\",\n    \"name\": \"MNQ 1\"\n}"
+						}
+					]
+				},
+				{
+					"name": "get machine",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}:{{port}}/api/machines",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"machines"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get machine",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}:{{port}}/api/machines",
+									"host": [
+										"{{url}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"api",
+										"machines"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "168"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.0.1 Python/3.9.4"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 04 Jun 2021 10:26:36 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"location\": \"Central World Exit 1\",\n        \"name\": \"XAZ 1\"\n    },\n    {\n        \"id\": 2,\n        \"location\": \"Icon Siam Exit 4\",\n        \"name\": \"MNQ 1\"\n    }\n]"
+						}
+					]
+				}
+			],
+			"description": "Vending Machine\nCRUD Machine before adding  stocks to the machine!"
+		},
+		{
+			"name": "stock",
+			"item": [
+				{
+					"name": "add stock machine 1",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"add\": [\n        {\n            \"product_id\": 1,\n            \"quantity\": 3\n        },\n        {\n            \"product_id\": 2,\n            \"quantity\": 9\n        }\n    ],\n    \"remove\": [ ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}:{{port}}/api/stocks/1",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"stocks",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "add stock machine 1",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"add\": [\n        {\n            \"product_id\": 1,\n            \"quantity\": 3\n        },\n        {\n            \"product_id\": 2,\n            \"quantity\": 9\n        }\n    ],\n    \"remove\": [ ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}:{{port}}/api/stocks/1",
+									"host": [
+										"{{url}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"api",
+										"stocks",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "3"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.0.1 Python/3.9.4"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 04 Jun 2021 10:28:53 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "[]"
+						}
+					]
+				},
+				{
+					"name": "add stock machine 2",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"add\": [\n        {\n            \"product_id\": 3,\n            \"quantity\": 3\n        }\n    ],\n    \"remove\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}:{{port}}/api/stocks/2",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"stocks",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "add stock machine 2",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"add\": [\n        {\n            \"product_id\": 3,\n            \"quantity\": 3\n        }\n    ],\n    \"remove\": []\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}:{{port}}/api/stocks/2",
+									"host": [
+										"{{url}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"api",
+										"stocks",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "3"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.0.1 Python/3.9.4"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 04 Jun 2021 10:29:01 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "[]"
+						}
+					]
+				},
+				{
+					"name": "remove stock machine 1",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"add\": [\n    ],\n    \"remove\": [\n        {\n            \"product_id\": 2,\n            \"quantity\": 1\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}:{{port}}/api/stocks/1",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"stocks",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "remove stock machine 1",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"add\": [\n    ],\n    \"remove\": [\n        {\n            \"product_id\": 2,\n            \"quantity\": 1\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}:{{port}}/api/stocks/1",
+									"host": [
+										"{{url}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"api",
+										"stocks",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "174"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.0.1 Python/3.9.4"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 04 Jun 2021 10:29:10 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"machine_id\": 1,\n        \"product_id\": 1,\n        \"quantity\": 3\n    },\n    {\n        \"id\": 2,\n        \"machine_id\": 1,\n        \"product_id\": 2,\n        \"quantity\": 8\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "get stocks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}:{{port}}/api/stocks",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"stocks"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get stock",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}:{{port}}/api/stocks",
+									"host": [
+										"{{url}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"api",
+										"stocks"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "260"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.0.1 Python/3.9.4"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 04 Jun 2021 10:29:15 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"machine_id\": 1,\n        \"product_id\": 1,\n        \"quantity\": 3\n    },\n    {\n        \"id\": 2,\n        \"machine_id\": 1,\n        \"product_id\": 2,\n        \"quantity\": 9\n    },\n    {\n        \"id\": 3,\n        \"machine_id\": 2,\n        \"product_id\": 3,\n        \"quantity\": 3\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "get stock machine 1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}:{{port}}/api/stocks/1",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"stocks",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get stock machine 1",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}:{{port}}/api/stocks/1",
+									"host": [
+										"{{url}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"api",
+										"stocks",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "174"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.0.1 Python/3.9.4"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 04 Jun 2021 10:29:26 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"machine_id\": 1,\n        \"product_id\": 1,\n        \"quantity\": 3\n    },\n    {\n        \"id\": 2,\n        \"machine_id\": 1,\n        \"product_id\": 2,\n        \"quantity\": 9\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "get stock machine 2",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}:{{port}}/api/stocks/2",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"stocks",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get stock machine 2",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}:{{port}}/api/stocks/2",
+									"host": [
+										"{{url}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"api",
+										"stocks",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "88"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.0.1 Python/3.9.4"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 04 Jun 2021 10:29:34 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 3,\n        \"machine_id\": 2,\n        \"product_id\": 3,\n        \"quantity\": 3\n    }\n]"
+						}
+					]
+				}
+			],
+			"description": "Get stock to display products on each machine screen and you can updates stock."
+		},
+		{
+			"name": "orders",
+			"item": [
+				{
+					"name": "new order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"payment\": 14000,\n    \"net_price\": 13997,\n    \"machine_id\": 2,\n    \"order_details\": [\n        {\n            \"product_id\": 1,\n            \"quantity\": 2,\n            \"price\": 4999.0\n        },\n        {\n            \"product_id\": 2,\n            \"quantity\": 1,\n            \"price\": 3999.0\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}:{{port}}/api/orders",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get order",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}:{{port}}/api/orders",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get order by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}:{{port}}/api/orders/1",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"orders",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "localhost"
+		},
+		{
+			"key": "port",
+			"value": "5000"
+		}
+	]
+}
